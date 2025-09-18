@@ -1,0 +1,4 @@
+rootProject.name = 'technical-challenge-sofka'
+
+include("account-movement-msv")
+include("customer-person-msv")
