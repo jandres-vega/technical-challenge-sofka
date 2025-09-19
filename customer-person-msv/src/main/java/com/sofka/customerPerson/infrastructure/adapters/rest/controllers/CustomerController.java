@@ -3,7 +3,6 @@ package com.sofka.customerPerson.infrastructure.adapters.rest.controllers;
 import com.sofka.codeBase.application.ports.in.ICommandHandler;
 import com.sofka.codeBase.application.ports.in.IQueryHandler;
 import com.sofka.codeBase.infrastructure.adapters.BaseController;
-import com.sofka.codeBase.infrastructure.adapters.BaseValidator;
 import com.sofka.customerPerson.application.dto.request.CustomerRequest;
 import com.sofka.customerPerson.application.dto.response.CustomerResponse;
 import com.sofka.customerPerson.application.query.GetAllCustomerQuery;
