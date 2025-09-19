@@ -1,7 +1,7 @@
 package com.sofka.customerPerson.infrastructure.adapters.repositories;
 
 import com.sofka.customerPerson.domain.models.Customer;
-import com.sofka.customerPerson.domain.repository.CustomRepository;
+import com.sofka.customerPerson.domain.repository.CustomerRepository;
 import com.sofka.customerPerson.infrastructure.adapters.percistence.ICustomerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Component
 @AllArgsConstructor
-public class CustomRepositoryAdapter implements CustomRepository {
+public class CustomerRepositoryAdapter implements CustomerRepository {
 
     private final ICustomerRepository customerRepository;
 
@@ -43,15 +43,5 @@ public class CustomRepositoryAdapter implements CustomRepository {
     @Override
     public void deleteById(String id) {
         customerRepository.deleteById(id);
-    }
-
-    @Override
-    public boolean existsByCustomerId(String customerId) {
-        return customerRepository.findCustomerByCustomerId(customerId).isPresent();
-    }
-
-    @Override
-    public boolean existsByIdentification(String identification) {
-        return customerRepository.findCustomerByIdentification(identification).isPresent();
     }
 }

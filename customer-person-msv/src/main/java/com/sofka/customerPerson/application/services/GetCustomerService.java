@@ -1,7 +1,7 @@
 package com.sofka.customerPerson.application.services;
 
 import com.sofka.customerPerson.domain.models.Customer;
-import com.sofka.customerPerson.domain.repository.CustomRepository;
+import com.sofka.customerPerson.domain.repository.CustomerRepository;
 import com.sofka.customerPerson.infrastructure.exceptions.CustomerNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class GetCustomerService  {
 
-    private final CustomRepository customerRepository;
+    private final CustomerRepository customerRepository;
 
     public Customer getCustomerByCustomerId(String customerId) {
         return customerRepository.findCustomerById(customerId)
