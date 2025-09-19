@@ -29,6 +29,8 @@ public class UpdateCustomerCommandHandler implements ICommandHandler<CustomerReq
                 command.getPassword(),
                 command.getStatus()
         );
+
+        customer.setId(command.getCustomerId());
         Customer updatedCustomer = updateCustomerService.updateCustomer(customer);
         return customerMapper.map(updatedCustomer);
     }

@@ -12,13 +12,8 @@ public class CustomerMapper implements IBaseMapper<Customer, CustomerResponse> {
         CustomerResponse response = new CustomerResponse();
         response.setId(source.getId());
         response.setName(source.getName());
-        response.setGender(source.getGender());
         response.setAge(source.getAge());
-        response.setIdentification(source.getIdentification());
-        response.setAddress(source.getAddress());
-        response.setPhone(source.getPhone());
         response.setCustomerId(source.getCustomerId());
-        response.setStatus(source.getStatus());
         return response;
     }
 }

@@ -1,12 +1,10 @@
 package com.sofka.customerPerson.application.services;
 
-import com.sofka.codeBase.infrastructure.exceptions.BaseException;
 import com.sofka.customerPerson.domain.models.Customer;
 import com.sofka.customerPerson.domain.repository.CustomRepository;
 import com.sofka.customerPerson.infrastructure.exceptions.CustomerNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 @Service
