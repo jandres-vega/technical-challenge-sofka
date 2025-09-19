@@ -22,7 +22,7 @@ public class ReportService {
     private final CustomerClient customerClient;
 
     public List<AccountStatementResponse> generateAccountStatement(String customerId, LocalDateTime startDate, LocalDateTime endDate) {
-        // Obtener información del cliente desde el microservicio customer-person
+
         String customerName = customerClient.getCustomerById(customerId).getName();
 
         List<Account> accounts = accountService.getAccountsByCustomerId(customerId);
