@@ -24,11 +24,9 @@ public class MovementService {
     public Movement createMovement(String accountNumber, String movementType, BigDecimal value) {
         Account account = accountService.getAccountByNumber(accountNumber);
 
-        // F3: Validación de saldo insuficiente
         BigDecimal newBalance = account.getCurrentBalance().add(value);
         if (newBalance.compareTo(BigDecimal.ZERO) < 0) throw new InsufficientBalanceException();
 
-        // F2: Actualizar saldo disponible
         account.setCurrentBalance(newBalance);
         accountService.updateAccount(account);
 
