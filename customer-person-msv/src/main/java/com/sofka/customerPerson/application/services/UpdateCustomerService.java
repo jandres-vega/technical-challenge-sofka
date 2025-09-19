@@ -3,6 +3,7 @@ package com.sofka.customerPerson.application.services;
 import com.sofka.codeBase.infrastructure.exceptions.BaseException;
 import com.sofka.customerPerson.domain.models.Customer;
 import com.sofka.customerPerson.domain.repository.CustomRepository;
+import com.sofka.customerPerson.infrastructure.exceptions.CustomerNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,7 @@ public class UpdateCustomerService  {
     public Customer updateCustomer(Customer customer) {
         String id = customer.getId();
         Customer customerFind = customerRepository.findById(id)
-                .orElseThrow(() -> new BaseException("Customer no found", HttpStatus.NOT_FOUND, null));
+                .orElseThrow(() -> new CustomerNotFoundException("Cliente no encontrado con ID: " + id));
         customerFind.setName(customer.getName());
         customerFind.setGender(customer.getGender());
         customerFind.setAge(customer.getAge());

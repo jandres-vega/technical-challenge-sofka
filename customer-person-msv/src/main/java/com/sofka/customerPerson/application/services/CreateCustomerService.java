@@ -3,6 +3,8 @@ package com.sofka.customerPerson.application.services;
 import com.sofka.codeBase.infrastructure.exceptions.BaseException;
 import com.sofka.customerPerson.domain.models.Customer;
 import com.sofka.customerPerson.domain.repository.CustomRepository;
+import com.sofka.customerPerson.infrastructure.exceptions.CustomerAlreadyExistsException;
+import com.sofka.customerPerson.infrastructure.exceptions.DuplicateIdentificationException;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,11 +21,11 @@ public class CreateCustomerService {
         try {
 
             if (customerRepository.findCustomerById(customer.getCustomerId()).isPresent()) {
-                throw new BaseException("Cliente ID ya existe", HttpStatus.BAD_REQUEST, null);
+                throw new CustomerAlreadyExistsException("Cliente ID ya existe: " + customer.getCustomerId());
             }
 
             if (customerRepository.findCustomerByIdentification(customer.getIdentification()).isPresent()) {
-                throw new BaseException("Identificación ya existe", HttpStatus.BAD_REQUEST, null);
+                throw new DuplicateIdentificationException("Identificación ya existe: " + customer.getIdentification());
             }
 
             return customerRepository.save(customer);
