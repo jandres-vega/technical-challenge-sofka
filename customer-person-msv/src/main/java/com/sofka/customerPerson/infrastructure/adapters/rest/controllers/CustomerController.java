@@ -44,7 +44,6 @@ public class CustomerController extends BaseController {
     @PutMapping("/{id}")
     public ResponseEntity<?> updateCustomer(@PathVariable String id, @RequestBody CustomerRequest request) {
         request.setCustomerId(id);
-        System.out.println("AQUI LLEGA " + id + " - " + request);
         return handleRequest(() -> updateCustomerCommandHandler.handle(request));
     }
 
