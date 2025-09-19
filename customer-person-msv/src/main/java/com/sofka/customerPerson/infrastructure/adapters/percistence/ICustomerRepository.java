@@ -11,7 +11,6 @@ import java.util.Optional;
 
 @Repository
 public interface ICustomerRepository extends JpaRepository<Customer,String> {
-    Optional<Customer> findCustomerById(String id);
     Optional<Customer> findCustomerByIdentification(String identification);
     @Query("SELECT c FROM Customer c WHERE c.customerId = :customerId")
     Optional<Customer> findCustomerByCustomerId(@Param("customerId") String customerId);

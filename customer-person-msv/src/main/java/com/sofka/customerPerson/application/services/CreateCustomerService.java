@@ -1,7 +1,7 @@
 package com.sofka.customerPerson.application.services;
 
 import com.sofka.customerPerson.domain.models.Customer;
-import com.sofka.customerPerson.domain.repository.CustomRepository;
+import com.sofka.customerPerson.domain.repository.CustomerRepository;
 import com.sofka.customerPerson.infrastructure.exceptions.CustomerAlreadyExistsException;
 import com.sofka.customerPerson.infrastructure.exceptions.DuplicateIdentificationException;
 import jakarta.transaction.Transactional;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class CreateCustomerService {
 
-    private final CustomRepository customerRepository;
+    private final CustomerRepository customerRepository;
 
     @Transactional
     public Customer apply(Customer customer) {

@@ -8,6 +8,7 @@ import com.sofka.customerPerson.application.dto.response.CustomerResponse;
 import com.sofka.customerPerson.application.query.GetAllCustomerQuery;
 import com.sofka.customerPerson.application.query.GetCustomerQuery;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +28,7 @@ public class CustomerController extends BaseController {
     private final ICommandHandler<String, Void> deleteCustomerCommandHandler;
 
     @PostMapping
-    public ResponseEntity<?> createCustomer(@RequestBody CustomerRequest request) {
+    public ResponseEntity<?> createCustomer(@Valid @RequestBody CustomerRequest request) {
         return handleCreateRequest(() -> createCustomerCommandHandler.handle(request));
     }
 
