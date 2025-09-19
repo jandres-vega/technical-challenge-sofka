@@ -1,10 +1,13 @@
 package com.sofka.codeBase.infrastructure.adapters;
 
 import com.sofka.codeBase.infrastructure.exceptions.BaseException;
+import com.sofka.customerPerson.application.dto.response.CustomerResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.Map;
 
 public class BaseController {
@@ -46,7 +49,12 @@ public class BaseController {
 
     protected <T> ResponseEntity<?> handleCreateRequest(HandlerFunction<T> processingFunction) {
         try {
-            return createCreatedResponse(processingFunction.handle());
+            T result = processingFunction.handle();
+            String id = (result instanceof CustomerResponse) ? ((CustomerResponse) result).getId() : null;
+            URI location = (id != null && !id.isBlank())
+                    ? ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(id).toUri()
+                    : ServletUriComponentsBuilder.fromCurrentRequest().build().toUri();
+            return ResponseEntity.created(location).body(result);
         } catch (Throwable throwable) {
             return createErrorResponse(throwable);
         }
