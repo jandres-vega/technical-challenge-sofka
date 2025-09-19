@@ -27,8 +27,8 @@ public class CustomerController extends BaseController {
     private final ICommandHandler<String, Void> deleteCustomerCommandHandler;
 
     @PostMapping
-    public ResponseEntity<?> createCliente(@RequestBody CustomerRequest request) {
-        return handleRequest(() -> createCustomerCommandHandler.handle(request));
+    public ResponseEntity<?> createCustomer(@RequestBody CustomerRequest request) {
+        return handleCreateRequest(() -> createCustomerCommandHandler.handle(request));
     }
 
     @GetMapping("/{id}")
